@@ -1,0 +1,36 @@
+#quizz-loader {
+    @include flex(center, center);
+    font-size: 20pt;
+   
+    div {
+        height: 20vh;
+        @include flex(center, center);
+        width: 80%;       
+    }
+
+    input, select {
+        font-size: inherit;
+        outline: none;
+        border: none;
+        padding: 10pt;
+        width: 80%;
+        background-color: rgba($color: #fff, $alpha: 0.8);
+        &:focus {
+            outline: none;
+            border: none;
+        }
+    }
+
+
+    label { 
+        width: 20%;
+        text-align: left;
+    }
+
+    button {
+        font-size:  inherit;
+        padding: 15px 50px;
+    }
+
+
+}

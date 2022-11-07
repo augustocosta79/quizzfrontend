@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/app.js" defer></script>
+    <title>Themed Quizz</title>
+</head>
+<body>
+    <div id="app">
+        <section id="quizz-loader" class="">
+                <div>
+                    <label for="name">Player: </label>
+                    <input type="text" name="name" id="name"/>
+                </div>
+                <div>
+                    <label for="category">Category: </label>
+                    <select name="category" id="category"></select>
+                </div>
+                <div>
+                    <button id="startButton">Start Game!</button>
+                </div>
+        </section>
+
+        <section id="quizz-game" class="hide">
+            <div class="container">
+                <div id="game-data">
+                    <span id="player-name">Player: Augusto</span>
+                    <span id="player-round">Round: 0/10</span>
+                    <span id="player-score">Score: 0/10</span>
+                </div>
+                <div id="question" class="main-text">
+                    Loading you Quizz...
+                </div>
+            </div>
+            
+            <ul id="answers">
+                <!-- <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li>
+                <li>Lorem ipsum dolor.</li> -->
+            </ul>
+            <div id="navigation">
+                <button id="nextButton" disabled>Next</button>
+            </div>
+        </section>
+
+        <section id="quizz-result" class="hide">
+            <p id="message" class="main-text">Augusto scored 10 points!</p>
+            <br>
+            <div class="navigation">
+                <button id="restart">Restart Quizz</button>
+                <button id="new-game">New Game</button>
+            </div>
+
+
+        </section>
+    </div>
+</body>
+</html>

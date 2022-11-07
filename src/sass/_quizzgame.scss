@@ -1,0 +1,33 @@
+section#quizz-game {
+    
+    #game-data {
+        font-size: 0.7rem;
+        color: #666;
+        font-weight: bold;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 32vh;
+        
+        li{
+            background-color: rgba($color: rgb(238, 238, 238), $alpha: 0.8);
+            padding: 10px;
+            width: 70%;
+            border-left: 10px solid rgb(227, 240, 47);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        li.correct { border: 3px solid green}
+        li.wrong { border: 3px solid red }
+    }
+}
