@@ -17,7 +17,7 @@ export class QuizzResult extends GameData {
     }
 
     public static finalMessage(points: number) {
-        const messageBox = document.getElementById('message') as HTMLDivElement
+        const messageBox = document.getElementById('message') as HTMLParagraphElement
         const message = `${GameData.playerName}, you scored ${points}!`
         messageBox.innerText = message
     }
