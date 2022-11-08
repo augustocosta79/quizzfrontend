@@ -1,5 +1,6 @@
 import { GameData } from "./gamedata.js"
 import { IQuestion, Answer } from "./models.js"
+import { QuizzResult } from "./quizzresult.js"
 import { WindowCtrl } from "./windowctrl.js"
 
 export class Game extends GameData {
@@ -33,6 +34,7 @@ export class Game extends GameData {
     public static reset(): void {
         GameData.resetGame()
         Game.clearScreen()
+        QuizzResult.finalMessage(GameData.playerScore)
         WindowCtrl.goTo('quizz-loader')
     }
 
