@@ -34,7 +34,6 @@ export class Game extends GameData {
     public static reset(): void {
         GameData.resetGame()
         Game.clearScreen()
-        QuizzResult.finalMessage(GameData.playerScore)
         WindowCtrl.goTo('quizz-loader')
     }
 
@@ -85,6 +84,7 @@ export class Game extends GameData {
 
         if (GameData.currentQuestionIndex >= GameData.questions.length - 1) {
             Game.nextButton.disabled = true
+            QuizzResult.finalMessage(GameData.playerScore)
             WindowCtrl.goTo('quizz-result')
             return
         }
