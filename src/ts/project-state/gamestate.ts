@@ -13,6 +13,8 @@ export class GameState {
     static renderPlayerData: Function
     static clearGameScreen: Function
 
+    static renderResultMessage: Function
+
     static newQuizz(questions: IQuestion[], playerName: string): void {
         this.playerName = playerName
         this.Questions = questions
@@ -23,14 +25,20 @@ export class GameState {
     }
 
     static restart(): void {
-        this.playerName = ''
         this.playerScore = 0
-        this.gameRound = 1
+        this.gameRound += 1
+        this.currentQuestionIndex = 0
         this.clearGameScreen()
+        this.renderPlayerData(this.playerName, this.playerScore, this.gameRound)
+        this.renderQuizzElements(this.currentQuestionIndex, this.Questions)
+        this.activeWindow('quizz-game')
     }
 
     static reset(): void {
-        this.restart()
+        this.playerName = ''
+        this.playerScore = 0
+        this.gameRound = 1
+        this.currentQuestionIndex = 0
         this.Questions = []
         this.activeWindow('quizz-loader')
     }
@@ -45,6 +53,8 @@ export class GameState {
 
     static nextQuestion(): void {
         if(this.currentQuestionIndex >= this.Questions.length - 1) {
+            const message = `${this.playerName}, you scored ${this.playerScore} points!`
+            this.renderResultMessage(message)
             this.activeWindow('quizz-result')
             return    
         }
