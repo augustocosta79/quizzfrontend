@@ -45,6 +45,7 @@ export class Game {
         const quizz = questions[currentQuestionIndex]
         this.questionBox.textContent = quizz.question
         this.renderAnswers(quizz.answers)
+        this.nextButton.disabled = true
     }
 
 
