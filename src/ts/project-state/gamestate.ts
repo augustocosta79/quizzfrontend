@@ -41,6 +41,14 @@ export class GameState {
             this.playerScore += 1
             this.renderPlayerData(this.playerName, this.playerScore, this.gameRound)
         }
-        alert(index)
+    }
+
+    static nextQuestion(): void {
+        if(this.currentQuestionIndex >= this.Questions.length - 1) {
+            this.activeWindow('quizz-result')
+            return    
+        }
+        this.currentQuestionIndex += 1
+        this.renderQuizzElements(this.currentQuestionIndex, this.Questions)
     }
 }
