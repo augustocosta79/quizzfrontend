@@ -22,6 +22,10 @@ export class Game {
         GameState.renderPlayerData = (playerName: string, playerScore: number, gameRound: number) => {
             this.renderPlayerData(playerName, playerScore, gameRound)
         }
+
+        GameState.renderAnswers = (answers: Answer[], checked: boolean) => {
+            this.renderAnswers(answers, checked)
+        }
         // Game.configureNextButton()
     }
 
@@ -46,16 +50,21 @@ export class Game {
     }
 
 
-    renderAnswers(answers: Answer[]): void {
-        answers.forEach((answer) => {
+    renderAnswers(answers: Answer[], checked?: boolean): void {
+        this.answersBox.innerHTML = ''
+        answers.forEach((answer, index) => {
             const li = document.createElement('li')
             li.textContent = answer.text
-            li.dataset.correct = 'false'
-            if(answer.correct) {
-                li.dataset.correct = 'true'
+            if(checked) { li.className = 'wrong' }
+            if(checked && answer.correct) { li.className = 'correct' }
+            if(!checked) {
+                li.addEventListener('click', (event: Event) => {
+                    event.preventDefault()
+                    GameState.checkCorrectAnswer(index)
+                })
             }
-            // li.addEventListener('click', Game.checkCorrectAnswer, true)
             this.answersBox.appendChild(li)
+            if(checked) { this.nextButton.disabled = false }
         })
     }
 
