@@ -1,21 +1,29 @@
+import { GameState } from "../project-state/gamestate.js"
+
 export class QuizzResult {
     
     private restartButton = document.getElementById('restart')! as HTMLButtonElement
     private newGameButton = document.getElementById('new-game')! as HTMLButtonElement
 
     constructor(){
+        GameState.renderResultMessage = (message: string) => {
+            this.finalMessage(message)
+        }
         this.configureButtons()
     }
 
     private configureButtons(): void {
-        // this.restartButton.addEventListener('click', Game.restart)
-        // this.newGameButton.addEventListener('click', Game.reset)
+        this.restartButton.addEventListener('click', () => {
+            GameState.restart()
+        })
+        this.newGameButton.addEventListener('click', () => {
+            GameState.reset()
+        })
     }
 
-    public static finalMessage(points: number) {
-        // const messageBox = document.getElementById('message') as HTMLParagraphElement
-        // const message = `${GameData.playerName}, you scored ${points} points!`
-        // messageBox.innerText = message
+    finalMessage(message: string) {
+        const messageBox = document.getElementById('message') as HTMLParagraphElement
+        messageBox.innerText = message
     }
 
 }
