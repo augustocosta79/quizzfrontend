@@ -9,6 +9,7 @@ export class GameState {
 
     static activeWindow: Function
     static renderQuizzElements: Function
+    static renderAnswers: Function
     static renderPlayerData: Function
     static clearGameScreen: Function
 
@@ -32,5 +33,14 @@ export class GameState {
         this.restart()
         this.Questions = []
         this.activeWindow('quizz-loader')
+    }
+
+    static checkCorrectAnswer(index: number){
+        this.renderAnswers(this.Questions[this.currentQuestionIndex].answers, true)
+        if(this.Questions[this.currentQuestionIndex].answers[index].correct) {
+            this.playerScore += 1
+            this.renderPlayerData(this.playerName, this.playerScore, this.gameRound)
+        }
+        alert(index)
     }
 }
