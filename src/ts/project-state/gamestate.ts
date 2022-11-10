@@ -1,4 +1,4 @@
-import { IQuestion } from "../models/quizz"
+import { IQuestion } from "../models/quizz.js"
 
 export class GameState {
     static playerName: string = ''
