@@ -1,7 +1,5 @@
 import { IQuestion, Answer } from "../models/quizz.js"
 import { GameState } from "../project-state/gamestate.js"
-import { QuizzResult } from "./quizzresult.js"
-import { WindowCtrl } from "./windowctrl.js"
 
 export class Game {
 
@@ -26,7 +24,7 @@ export class Game {
         GameState.renderAnswers = (answers: Answer[], checked: boolean) => {
             this.renderAnswers(answers, checked)
         }
-        // Game.configureNextButton()
+        this.configureNextButton()
     }
 
      private renderPlayerData(playerName: string, playerScore: number, gameRound: number): void {
@@ -69,52 +67,13 @@ export class Game {
     }
 
     private configureNextButton(): void {
-        // Game.nextButton.addEventListener('click', this.nextQuestion)
+        this.nextButton.addEventListener('click', () => {
+            GameState.nextQuestion()
+        })
     }
 
     private clearScreen(): void {
         this.questionBox.innerHTML = ''
         this.answersBox.innerHTML = ''
-    }
-
-    // private static nextQuestion(): void {
-
-    //     if (GameData.currentQuestionIndex >= GameData.questions.length - 1) {
-    //         Game.nextButton.disabled = true
-    //         QuizzResult.finalMessage(GameData.playerScore)
-    //         WindowCtrl.goTo('quizz-result')
-    //         return
-    //     }
-        
-    //     GameData.currentQuestionIndex += 1
-    //     console.log(GameData.currentQuestionIndex)
-    //     Game.clearScreen()
-    //     Game.nextButton.disabled = true
-    //     Game.renderQuestion(GameData.currentQuestionIndex)            
-    // }
-
-
-    checkCorrectAnswer(event: any): void {
-        
-        const answers = document.querySelectorAll('#answers > li')! as NodeListOf<HTMLLIElement>
-        const nextButton = document.getElementById('nextButton')! as HTMLButtonElement
-        nextButton.disabled = false
-        answers.forEach(answer => {
-            if (answer.dataset.correct === 'true') {
-                answer.classList.add('correct')
-                return
-            }
-            answer.classList.add('wrong')
-        })
-        console.log(event.target)
-        if (event.target.dataset.correct === 'true') {
-            // GameData.playerScore += 1
-            // Game.loadPlayerData()
-        }
-        
-        answers.forEach( answer => {
-            // answer.removeEventListener('click', Game.checkCorrectAnswer, true)
-
-        })
     }
 }
